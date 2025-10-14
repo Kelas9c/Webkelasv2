@@ -2,9 +2,6 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
-
 collections:
   - name: "pengaturan"
     label: "Pengaturan Website"
@@ -16,54 +13,9 @@ collections:
           - { label: "Nama Kelas", name: "nama_kelas", widget: "string" }
           - { label: "Nama Sekolah", name: "nama_sekolah", widget: "string" }
           - { label: "Tahun Ajaran", name: "tahun_ajaran", widget: "string" }
-          - { label: "Link Musik", name: "link_musik", widget: "string", hint: "Contoh: /audio/lagu-kelas.mp3" }
-          - { label: "Teks Footer", name: "teks_footer", widget: "string", default: "© 2025 Kelas IX C | Dibuat dengan semangat kebersamaan." }
-          - label: "Kartu Ringkasan"
-            name: "kartu_ringkasan"
-            widget: "list"
-            fields:
-              - { label: "Angka", name: "angka", widget: "string" }
-              - { label: "Label", name: "label", widget: "string" }
-          - label: "Hitung Mundur"
-            name: "countdown"
-            widget: "object"
-            fields:
-              - { label: "Judul", name: "judul", widget: "string" }
-              - { label: "Tanggal Target", name: "tanggal_target", widget: "datetime" }
-          - label: "Struktur Kelas"
-            name: "struktur_kelas"
-            widget: "list"
-            fields:
-              - { label: "Posisi", name: "posisi", widget: "string" }
-              - { label: "Nama", name: "nama", widget: "string" }
-              - { label: "Warna Latar", name: "warna", widget: "string", hint: "Gunakan kode warna hex, contoh: #FF6B6B" }
-          - label: "Jadwal Pelajaran"
-            name: "jadwal_pelajaran"
-            widget: "list"
-            fields:
-              - { label: "Jam", name: "jam", widget: "string" }
-              - { label: "Senin", name: "senin", widget: "string" }
-              - { label: "Selasa", name: "selasa", widget: "string" }
-              - { label: "Rabu", name: "rabu", widget: "string" }
-              - { label: "Kamis", name: "kamis", widget: "string" }
-              - { label: "Jumat", name: "jumat", widget: "string" }
-              - { label: "Sabtu", name: "sabtu", widget: "string" }
-          - label: "Jadwal Piket"
-            name: "jadwal_piket"
-            widget: "list"
-            fields:
-              - { label: "Hari", name: "hari", widget: "string" }
-              - { label: "Nama", name: "nama", widget: "list" }
           - label: "Pengumuman"
             name: "pengumuman"
             widget: "list"
             fields:
               - { label: "Judul", name: "judul", widget: "string" }
-              - { label: "Tanggal", name: "tanggal", widget: "datetime" }
               - { label: "Isi Pengumuman", name: "isi", widget: "markdown" }
-          - label: "Galeri Foto"
-            name: "galeri"
-            widget: "list"
-            fields:
-              - { label: "Gambar", name: "gambar", widget: "image" }
-              - { label: "Deskripsi", name: "deskripsi", widget: "string" }
