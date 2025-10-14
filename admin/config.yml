@@ -2,20 +2,12 @@ backend:
   name: git-gateway
   branch: main
 
+media_folder: "images"
+
 collections:
-  - name: "pengaturan"
-    label: "Pengaturan Website"
-    files:
-      - file: "data.json"
-        label: "Data Utama Website"
-        name: "data"
-        fields:
-          - { label: "Nama Kelas", name: "nama_kelas", widget: "string" }
-          - { label: "Nama Sekolah", name: "nama_sekolah", widget: "string" }
-          - { label: "Tahun Ajaran", name: "tahun_ajaran", widget: "string" }
-          - label: "Pengumuman"
-            name: "pengumuman"
-            widget: "list"
-            fields:
-              - { label: "Judul", name: "judul", widget: "string" }
-              - { label: "Isi Pengumuman", name: "isi", widget: "markdown" }
+  - name: "test"
+    label: "Tes"
+    folder: "_posts"
+    create: true
+    fields:
+      - { label: "Judul Tes", name: "title", widget: "string" }
