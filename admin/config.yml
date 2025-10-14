@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads" # Folder untuk menyimpan gambar yang di-upload
-public_folder: "/images/uploads" # Path URL untuk menampilkan gambar
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "pengaturan"
