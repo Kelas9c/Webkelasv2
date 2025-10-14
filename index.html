@@ -1,1 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas IX C</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* == SEMUA KODE CSS LAMA ANDA TETAP DI SINI, TIDAK PERLU DIUBAH == */
+        :root { --primary-color: #7B66FF; --secondary-color: #FF6B6B; --accent-color: #4DCCBD; --bg-light: #F4F7F6; --bg-card: #FFFFFF; --text-dark: #333333; --text-light: #777777; --border-radius: 16px; --shadow: 0 4px 20px rgba(0, 0, 0, 0.07); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header-card { background: var(--bg-card); border-radius: var(--border-radius); box-shadow: var(--shadow); padding: 2rem; text-align: center; margin-bottom: 2rem; }
+        .header-card h1 { color: var(--primary-color); font-size: 2.5rem; }
+        .header-card p { color: var(--text-light); font-size: 1.1rem; }
+        .tabs-nav { display: flex; background: var(--bg-card); border-radius: var(--border-radius); box-shadow: var(--shadow); padding: 0.5rem; margin-bottom: 2rem; overflow-x: auto; }
+        .tab-btn { flex: 1; padding: 1rem; border: none; background: transparent; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text-light); cursor: pointer; transition: all 0.3s ease; white-space: nowrap; }
+        .tab-btn.active { background-color: var(--primary-color); color: white; box-shadow: 0 2px 10px rgba(123, 102, 255, 0.4); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .countdown-wrapper { background: var(--bg-card); border-radius: var(--border-radius); box-shadow: var(--shadow); padding: 2rem; text-align: center; margin-top: 2.5rem; }
+        .countdown-wrapper h2 { margin-top: 0; margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--primary-color); }
+        #countdown-timer { display: flex; justify-content: center; gap: 1rem; }
+        .time-box { background: var(--bg-light); padding: 1rem; border-radius: 12px; width: 100px; }
+        .time-box span { display: block; font-size: 2.5rem; font-weight: 700; color: var(--text-dark); }
+        .time-box small { font-size: 0.9rem; color: var(--text-light); }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--text-dark); }
+        .summary-grid, .structure-grid, .gallery-grid, .piket-grid, .info-grid { display: grid; gap: 1.5rem; }
+        .summary-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+        .piket-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .info-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .info-card { background: var(--bg-card); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--shadow); border-left: 5px solid var(--accent-color); }
+        .info-card h3 { color: var(--primary-color); margin-top: 0; }
+        .info-card small { color: var(--text-light); }
+        .summary-card, .structure-card { padding: 1.5rem; border-radius: var(--border-radius); text-align: center; box-shadow: var(--shadow); }
+        .summary-card { background: linear-gradient(135deg, var(--accent-color), #86e3ce); color: white; }
+        .summary-card .number { font-size: 3rem; font-weight: 700; }
+        .summary-card .label { font-size: 1rem; font-weight: 500; }
+        .structure-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        .structure-card { background: var(--bg-card); }
+        .structure-card .role { font-weight: 700; padding: 0.5rem 1rem; border-radius: 8px; color: white; margin-bottom: 1rem; display: inline-block; }
+        .structure-card .name { font-weight: 600; }
+        .role.ketua { background: var(--secondary-color); } .role.wakil { background: #FFA07A; } .role.sekretaris { background: var(--accent-color); } .role.bendahara { background: #9370DB; }
+        .schedule-table-wrapper { overflow-x: auto; background: var(--bg-card); padding: 1rem; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+        .schedule-table { width: 100%; border-collapse: collapse; text-align: center; }
+        .schedule-table th, .schedule-table td { padding: 1rem; border: 1px solid var(--bg-light); }
+        .schedule-table th { background: var(--primary-color); color: white; font-weight: 600; }
+        .schedule-table tr:nth-child(even) { background-color: #f9f9f9; }
+        .piket-card { background: var(--bg-card); border-radius: var(--border-radius); box-shadow: var(--shadow); padding: 1.5rem; }
+        .piket-card h3 { color: var(--primary-color); border-bottom: 2px solid var(--bg-light); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        .piket-card ul { list-style: none; padding-left: 0; }
+        .piket-card li { padding: 0.5rem 0; border-bottom: 1px dashed #eee; }
+        .piket-card li:last-child { border-bottom: none; }
+        .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--border-radius); box-shadow: var(--shadow); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .gallery-item img:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); }
+        .lightbox { display: none; position: fixed; z-index: 1001; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; }
+        .lightbox.show { display: flex; }
+        .lightbox-content { max-width: 90%; max-height: 85%; animation: zoomIn 0.4s ease; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
+        @keyframes zoomIn { from { transform: scale(0.5); } to { transform: scale(1); } }
+        footer { text-align: center; padding: 1.5rem 2rem; margin-top: 2rem; background-color: #34495e; color: var(--bg-light); }
+        #music-toggle-btn { position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; background-color: var(--primary-color); color: white; border-radius: 50%; border: none; box-shadow: var(--shadow); cursor: pointer; display: flex; justify-content: center; align-items: center; transition: transform 0.3s ease; z-index: 1000; }
+        #music-toggle-btn:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header-card" id="header-container">
+            </header>
+        <nav class="tabs-nav">
+            <button class="tab-btn active" data-tab="ringkasan">Ringkasan</button>
+            <button class="tab-btn" data-tab="jadwal">Jadwal</button>
+            <button class="tab-btn" data-tab="pengumuman">Pengumuman</button>
+            <button class="tab-btn" data-tab="galeri">Galeri</button>
+        </nav>
+        <main>
+            <section id="ringkasan" class="tab-content active">
+                <div id="summary-container"></div>
+                <div id="countdown-container"></div>
+                <h2 style="margin-top: 2.5rem;">Struktur Kelas</h2>
+                <div class="structure-grid" id="struktur-container"></div>
+            </section>
+            <section id="jadwal" class="tab-content">
+                <h2>Jadwal Pelajaran</h2>
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table">
+                        <thead><tr><th>Jam</th><th>Senin</th><th>Selasa</th><th>Rabu</th><th>Kamis</th><th>Jumat</th><th>Sabtu</th></tr></thead>
+                        <tbody id="jadwal-pelajaran-body"></tbody>
+                    </table>
+                </div>
+                <h2 style="margin-top: 3rem;">Jadwal Piket Kelas</h2>
+                <div class="piket-grid" id="jadwal-piket-container"></div>
+            </section>
+            <section id="pengumuman" class="tab-content">
+                <h2>Pengumuman Kelas</h2>
+                <div class="info-grid" id="pengumuman-container"></div>
+            </section>
+            <section id="galeri" class="tab-content">
+                <h2>Galeri Kelas</h2>
+                <div class="gallery-grid" id="galeri-container"></div>
+            </section>
+        </main>
+    </div>
+    <footer id="footer-container"></footer>
+    <audio id="background-music" loop></audio>
+    <button id="music-toggle-btn" title="Putar Musik">
+        <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Ambil semua data dari file JSON
+                const res = await fetch('/data.json');
+                const data = await res.json();
 
+                // Isi semua konten
+                document.getElementById('header-container').innerHTML = `<h1>${data.pengaturan.nama_kelas}</h1><p>${data.pengaturan.nama_sekolah} • Tahun Ajaran ${data.pengaturan.tahun_ajaran}</p>`;
+                document.getElementById('summary-container').innerHTML = data.kartu_ringkasan.map(card => `<div class="summary-card"><div class="number">${card.angka}</div><div class="label">${card.label}</div></div>`).join('');
+                document.getElementById('countdown-container').innerHTML = `<div class="countdown-wrapper"><h2>${data.countdown.judul}</h2><div id="countdown-timer"><div class="time-box"><span id="countdown-days">00</span><small>Hari</small></div><div class="time-box"><span id="countdown-hours">00</span><small>Jam</small></div><div class="time-box"><span id="countdown-minutes">00</span><small>Menit</small></div><div class="time-box"><span id="countdown-seconds">00</span><small>Detik</small></div></div></div>`;
+                document.getElementById('struktur-container').innerHTML = data.struktur_kelas.map(item => `<div class="structure-card" style="${item.posisi === 'Wali Kelas' ? 'grid-column: 1 / -1; background: #e8e4ff;' : ''}"><div class="role" style="background:${item.warna}">${item.posisi}</div><div class="name">${item.nama}</div></div>`).join('');
+                document.getElementById('jadwal-pelajaran-body').innerHTML = data.jadwal_pelajaran.map(row => `<tr><td>${row.jam}</td><td>${row.senin}</td><td>${row.selasa}</td><td>${row.rabu}</td><td>${row.kamis}</td><td>${row.jumat}</td><td>${row.sabtu}</td></tr>`).join('');
+                document.getElementById('jadwal-piket-container').innerHTML = data.jadwal_piket.map(day => `<div class="piket-card"><h3>${day.hari}</h3><ul>${day.nama.map(name => `<li>${name}</li>`).join('')}</ul></div>`).join('');
+                document.getElementById('pengumuman-container').innerHTML = data.pengumuman.reverse().map(item => `<div class="info-card"><h3>${item.judul}</h3><small>${new Date(item.tanggal).toLocaleDateString('id-ID', {day:'numeric', month:'long', year:'numeric'})}</small><p>${item.isi}</p></div>`).join('');
+                document.getElementById('galeri-container').innerHTML = data.galeri.reverse().map(item => `<div class="gallery-item"><img src="${item.gambar}" alt="${item.deskripsi}"></div>`).join('');
+                document.getElementById('footer-container').innerHTML = `<p>${data.pengaturan.teks_footer}</p>`;
+                document.getElementById('background-music').src = data.pengaturan.link_musik;
+                
+                // Inisialisasi fitur interaktif setelah konten dimuat
+                initCountdown(data.countdown.tanggal_target);
+                initMusicPlayer();
+                initTabs();
+                initLightbox();
+
+            } catch (error) {
+                console.error("Gagal memuat data utama:", error);
+                document.body.innerHTML = '<h1>Gagal memuat data. Silakan coba lagi nanti.</h1>';
+            }
+        });
+
+        // Semua fungsi interaktif lama tetap di sini
+        function initCountdown(tanggalTarget) { /* ... fungsi countdown ... */ }
+        function initMusicPlayer() { /* ... fungsi musik ... */ }
+        function initTabs() { /* ... fungsi tabs ... */ }
+        function initLightbox() { /* ... fungsi lightbox ... */ }
+        // (Kode lengkap fungsi-fungsi ini ada di bawah)
+        function initCountdown(tanggalTarget) {
+            const countdownTimer = document.getElementById('countdown-timer');
+            if(!countdownTimer) return;
+            const daysEl = document.getElementById('countdown-days'), hoursEl = document.getElementById('countdown-hours'), minutesEl = document.getElementById('countdown-minutes'), secondsEl = document.getElementById('countdown-seconds');
+            const interval = setInterval(() => {
+                const distance = new Date(tanggalTarget).getTime() - new Date().getTime();
+                if (distance < 0) { clearInterval(interval); countdownTimer.innerHTML = '<h3 style="color: var(--secondary-color);">Waktunya Telah Tiba!</h3>'; return; }
+                daysEl.innerText = String(Math.floor(distance / 86400000)).padStart(2, '0');
+                hoursEl.innerText = String(Math.floor((distance % 86400000) / 3600000)).padStart(2, '0');
+                minutesEl.innerText = String(Math.floor((distance % 3600000) / 60000)).padStart(2, '0');
+                secondsEl.innerText = String(Math.floor((distance % 60000) / 1000)).padStart(2, '0');
+            }, 1000);
+        }
+        function initMusicPlayer() {
+            const music = document.getElementById('background-music'), musicBtn = document.getElementById('music-toggle-btn'), iconPlay = document.getElementById('icon-play'), iconPause = document.getElementById('icon-pause');
+            if(!musicBtn) return;
+            musicBtn.addEventListener('click', () => {
+                if (music.paused) { music.play(); iconPlay.style.display = 'none'; iconPause.style.display = 'block'; }
+                else { music.pause(); iconPlay.style.display = 'block'; iconPause.style.display = 'none'; }
+            });
+        }
+        function initTabs() {
+            const tabs = document.querySelectorAll('.tab-btn'), contents = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(item => item.classList.remove('active'));
+                    contents.forEach(item => item.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.getElementById(tab.dataset.tab).classList.add('active');
+                });
+            });
+        }
+        function initLightbox() {
+            const lightbox = document.getElementById('lightbox'), lightboxImg = document.getElementById('lightbox-img'), lightboxClose = document.querySelector('.lightbox-close');
+            document.addEventListener('click', e => { if (e.target.closest('.gallery-item img')) { lightbox.classList.add('show'); lightboxImg.src = e.target.src; } });
+            if(lightboxClose) lightboxClose.addEventListener('click', () => lightbox.classList.remove('show'));
+            if(lightbox) lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('show'); });
+        }
+    </script>
+</body>
+  </html>
